@@ -86,14 +86,36 @@ section {
 /* Cards section */
 .cards {
   margin-top: 30px;
+  display: flex;
+  overflow-x: scroll;
 }
 
 .card {
   position: relative;
+  margin-right: 24px;
+  padding: 2px;
 }
 
-img {
+.card p {
+  font-weight: 300;
+  font-size: 12px;
+}
+
+.image {
   border-radius: 12px;
+  --multiplier: 1;
+  width: calc(176px * var(--multiplier));
+  height: calc(235px * var(--multiplier));
+  border-radius: 9px;
+  overflow: hidden;
+  margin-bottom: 6px;
+  background-color: lightgray;
+}
+
+.image img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
 }
 
 .card .status {
@@ -103,10 +125,6 @@ img {
   background-color: white;
   padding: 4px 6px;
   border-radius: 4px;
-}
-
-.card p {
-  font-weight: 300;
 }
 
 .card .star {

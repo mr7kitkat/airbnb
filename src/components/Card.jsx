@@ -1,23 +1,28 @@
 import React from "react";
-import card1 from "../assets/images/card-1.jpg";
 import thestar from "../assets/images/star.svg";
 
-export default function () {
+export default function (props) {
+  const image = new URL(`../assets/images/${props.image}`, import.meta.url)
+    .href;
+
   return (
     <div className="card">
-      <p className="status">SOLD OUT</p>
-      <img src={card1} alt="" />
+      {props.status ? <p className="status">{props.status}</p> : ""}
+      <div className="image">
+        <img src={image} alt="" />
+      </div>
       <div className="details">
         <div className="rating">
           <img src={thestar} alt="" className="star" />
           <p>
-            <span className="bold">5.0</span> (6) • USA
+            <span className="bold">{props.rating || 0}</span> (
+            {props.review || 0}) • USA
           </p>
         </div>
 
-        <p className="topic">Life lessons with Katie Zaferes</p>
+        <p className="topic">{props.topic || "Dummy Topic"}</p>
         <p className="charges">
-          <span className="bold">From $136</span> / person
+          <span className="bold">From ${props.fee || "00"}</span> / person
         </p>
       </div>
     </div>
